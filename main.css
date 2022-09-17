@@ -7,7 +7,8 @@ h1 {
   font-size: 22px;
 }
 
-.date-picker {
+.date-picker1,
+.date-picker2 {
   margin: 48px auto;
   width: 260px;
   height: auto;
@@ -18,7 +19,8 @@ h1 {
   transition: all 0.3s 0s ease-in-out;
 }
 
-.date-picker .input {
+.date-picker1 .input1,
+.date-picker2 .input2 {
   width: 100%;
   height: 50px;
   font-size: 0;
@@ -35,14 +37,18 @@ h1 {
   visibility: hidden;
 }
 
-.date-picker .input .result,
-.date-picker .input button {
+.date-picker1 .input1 .result1,
+.date-picker2 .input2 .result2,
+.date-picker1 .input1 button,
+.date-picker2 .input2 button {
   display: inline-block;
   vertical-align: top;
 }
 
-.date-picker .input .result,
-.date-picker .input .selected-date {
+.date-picker1 .input1 .result1,
+.date-picker2 .input2 .result2,
+.date-picker1 .input1 .selected-date1,
+.date-picker2 .input2 .selected-date2 {
   width: calc(100% - 50px);
   height: 50px;
   line-height: 50px;
@@ -53,7 +59,8 @@ h1 {
   box-sizing: border-box;
 }
 
-.date-picker .input button {
+.date-picker1 .input1 button,
+.date-picker2 .input2 button {
   width: 50px;
   height: 50px;
   background-color: #8392A7;
@@ -64,15 +71,18 @@ h1 {
   padding: 0;
 }
 
-.date-picker .input button:hover {
+.date-picker1 .input1 button:hover,
+.date-picker2 .input2 button:hover {
   background-color: #68768A;
 }
 
-.date-picker .input button:focus {
+.date-picker1 .input1 button:focus,
+.date-picker2 .input2 button:focus {
   outline: 0;
 }
 
-.date-picker .calendar {
+.date-picker1 .calendar1
+.date-picker2 .calendar2 {
   position: relative;
   width: 100%;
   background: #fff;
@@ -80,12 +90,14 @@ h1 {
   overflow: hidden;
 }
 
-.date-picker .ui-datepicker-inline {
+.date-picker1 .ui-datepicker-inline,
+.date-picker2 .ui-datepicker-inline{
   position: relative;
   width: 100%;
 }
 
-.date-picker .ui-datepicker-header {
+.date-picker1 .ui-datepicker-header,
+.date-picker2 .ui-datepicker-header {
   height: 100%;
   line-height: 50px;
   background: #8392A7;
@@ -93,8 +105,10 @@ h1 {
   margin-bottom: 10px;
 }
 
-.date-picker .ui-datepicker-prev,
-.date-picker .ui-datepicker-next {
+.date-picker1 .ui-datepicker-prev,
+.date-picker1 .ui-datepicker-next,
+.date-picker2 .ui-datepicker-prev,
+.date-picker2 .ui-datepicker-next {
   width: 20px;
   height: 20px;
   text-indent: 9999px;
@@ -105,28 +119,34 @@ h1 {
   margin-top: 12px;
 }
 
-.date-picker .ui-datepicker-prev {
+.date-picker1 .ui-datepicker-prev,
+.date-picker2 .ui-datepicker-prev {
   float: left;
   margin-left: 12px;
 }
 
-.date-picker .ui-datepicker-prev:after {
+.date-picker1 .ui-datepicker-prev:after,
+.date-picker2 .ui-datepicker-prev:after {
   transform: rotate(45deg);
   margin: -43px 0px 0px 8px;
 }
 
-.date-picker .ui-datepicker-next {
+.date-picker1 .ui-datepicker-next,
+.date-picker2 .ui-datepicker-next {
   float: right;
   margin-right: 12px;
 }
 
-.date-picker .ui-datepicker-next:after {
+.date-picker1 .ui-datepicker-next:after,
+.date-picker2 .ui-datepicker-next:after {
   transform: rotate(-135deg);
   margin: -43px 0px 0px 6px;
 }
 
-.date-picker .ui-datepicker-prev:after,
-.date-picker .ui-datepicker-next:after {
+.date-picker1 .ui-datepicker-prev:after,
+.date-picker1 .ui-datepicker-next:after,
+.date-picker2 .ui-datepicker-prev:after,
+.date-picker2 .ui-datepicker-next:after {
   content: "";
   position: absolute;
   display: block;
@@ -136,23 +156,30 @@ h1 {
   border-bottom: 2px solid #fff;
 }
 
-.date-picker .ui-datepicker-prev:hover,
-.date-picker .ui-datepicker-next:hover,
-.date-picker .ui-datepicker-prev:hover:after,
-.date-picker .ui-datepicker-next:hover:after {
+.date-picker1 .ui-datepicker-prev:hover,
+.date-picker1 .ui-datepicker-next:hover,
+.date-picker1 .ui-datepicker-prev:hover:after,
+.date-picker1 .ui-datepicker-next:hover:after,
+.date-picker2 .ui-datepicker-prev:hover,
+.date-picker2 .ui-datepicker-next:hover,
+.date-picker2 .ui-datepicker-prev:hover:after,
+.date-picker2 .ui-datepicker-next:hover:after {
   border-color: #7c92b2;
 }
 
-.date-picker .ui-datepicker-title {
+.date-picker1 .ui-datepicker-title,
+.date-picker2 .ui-datepicker-title {
   text-align: center;
 }
 
-.date-picker .ui-datepicker-calendar {
+.date-picker1 .ui-datepicker-calendar,
+.date-picker2 .ui-datepicker-calendar {
   width: 100%;
   text-align: center;
 }
 
-.date-picker .ui-datepicker-calendar thead tr th span {
+.date-picker1 .ui-datepicker-calendar thead tr th span,
+.date-picker2 .ui-datepicker-calendar thead tr th span {
   display: block;
   width: 100%;
   color: #758dae;
@@ -160,7 +187,8 @@ h1 {
   font-size: 13px;
 }
 
-.date-picker .ui-state-default {
+.date-picker1 .ui-state-default,
+.date-picker2 .ui-state-default {
   display: block;
   text-decoration: none;
   color: #979797;
@@ -168,29 +196,35 @@ h1 {
   font-size: 12px;
 }
 
-.date-picker .ui-state-default:hover {
+.date-picker1 .ui-state-default:hover,
+.date-picker2 .ui-state-default:hover {
   background: rgba(0, 0, 0, 0.02);
 }
 
-.date-picker .ui-state-highlight {
+.date-picker1 .ui-state-highlight,
+.date-picker2 .ui-state-highlight {
   color: #7789a2;
 }
 
-.date-picker .ui-state-active {
+.date-picker1 .ui-state-active,
+.date-picker2 .ui-state-active {
   color: #68768A;
   background-color: rgba(131, 146, 167, 0.12);
   font-weight: 600;
 }
 
-.date-picker .ui-datepicker-unselectable .ui-state-default {
+.date-picker1 .ui-datepicker-unselectable .ui-state-default,
+.date-picker2 .ui-datepicker-unselectable .ui-state-default {
   color: rgb(163, 163, 163);
   border: 2px solid transparent;
 }
 
-.date-picker.open {
+.date-picker1.open,
+.date-picker2.open {
   max-height: 400px;
 }
 
-.date-picker.open .input button {
+.date-picker1.open .input1 button,
+.date-picker2.open .input2 button {
   background: #8ca2c0;
 }
