@@ -1,11 +1,5 @@
 
 let select_date = document.querySelector(".result");
-$(function () {
-
-    select_date.innerHTML = "Select Date: "
-
-
-});
 
 $(".calendar").datepicker({
     dateFormat: 'mm/dd/yy',
