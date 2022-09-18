@@ -68,7 +68,107 @@ console.log(date1)
 console.log(date2)
 
 // Store dates into arrays
-const date1_m = date1.split("/")
-console.log(date1_m)
-const date2_m = date2.split("/")
-console.log(date2_m)
+const date1_array = date1.split("/")
+console.log(date1_array)
+const date2_array = date2.split("/")
+console.log(date2_array)
+
+var animal1
+var animal2
+const possible_animals = ["monkey", "rooster", "dog", "pig", "rate", "ox", "tiger", "rabbit", "dragon", "snake", "horse", "sheep"]
+
+// ----------------- date 1 ----------------------------
+switch (date1_array[2] % 12) {
+    case 0:
+        animal1 = possible_animals[0]
+        break;
+    case 1:
+        animal1 = possible_animals[1]
+        break;
+    case 2:
+        animal1 = possible_animals[2]
+        break;
+    case 3:
+        animal1 = possible_animals[3]
+        break;
+    case 4:
+        animal1 = possible_animals[4]
+        break;
+    case 5:
+        animal1 = possible_animals[5]
+        break;
+    case 6:
+        animal1 = possible_animals[6]
+        break;
+    case 7:
+        animal1 = possible_animals[7]
+        break;
+    case 8:
+        animal1 = possible_animals[8]
+        break;
+    case 9:
+        animal1 = possible_animals[9]
+        break;
+    case 10:
+        animal1 = possible_animals[10]
+        break;
+    case 11:
+        animal1 = possible_animals[11]
+}
+console.log(2022 % 12)
+console.log(animal1)
+
+// check for lunar new years
+if (date1_array[0] == '01' || date1_array[0] == '02') {
+    $.getJSON("	https://calendarific.com/api/v2/holidays?api_key=c951006e5e01815f962e4160bb7ae11ee5587f05&country=US&year=" +date1_array[2], function(data) {
+        console.log(data)
+        console.log(date1)
+        data.response.holidays.forEach(element => {
+            if (element.date.name == "Chinese New Year") {
+                // need to find corect date
+                console.log(element.date.datetime)
+            }
+        });
+    })
+}
+
+// ------------------ date 2 ---------------------------
+switch (date2_array[2] % 12) {
+    case 0:
+        animal2 = possible_animals[0]
+        break;
+    case 1:
+        animal2 = possible_animals[1]
+        break;
+    case 2:
+        animal2 = possible_animals[2]
+        break;
+    case 3:
+        animal2 = possible_animals[3]
+        break;
+    case 4:
+        animal2 = possible_animals[4]
+        break;
+    case 5:
+        animal2 = possible_animals[5]
+        break;
+    case 6:
+        animal2 = possible_animals[6]
+        break;
+    case 7:
+        animal2 = possible_animals[7]
+        break;
+    case 8:
+        animal2 = possible_animals[8]
+        break;
+    case 9:
+        animal2 = possible_animals[9]
+        break;
+    case 10:
+        animal2 = possible_animals[10]
+        break;
+    case 11:
+        animal2 = possible_animals[11]
+}
+console.log(2022 % 12)
+console.log(animal2)
