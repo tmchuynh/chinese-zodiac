@@ -1,5 +1,7 @@
 const results1 = document.querySelector(".selected-date1");
 const results2 = document.querySelector(".selected-date2");
+const image1 = document.querySelector(".animal1_image");
+const image2 = document.querySelector(".animal2_image");
 
 $(".calendar1").datepicker({
     dateFormat: 'mm/dd/yy',
@@ -15,14 +17,12 @@ $(document).on('click', '.date-picker1 .input1', function (e) {
     let $me = $(this),
         $parent = $me.parents('.date-picker1');
     $parent.toggleClass('open');
-
 });
 
 $(document).on('click', '.date-picker2 .input2', function (e) {
     let $me = $(this),
         $parent = $me.parents('.date-picker2');
     $parent.toggleClass('open');
-
 });
 
 $('.calendar2',).on('click', function (e) {
@@ -76,17 +76,17 @@ $(".results").on("click", function () {
     const possible_animals = ["monkey", "rooster", "dog", "pig", "rat", "ox", "tiger", "rabbit", "dragon", "snake", "horse", "sheep"]
 
     // ----------------- date 1 ----------------------------
-    checkLunarNewYear(date1_array, animal1);
+    checkLunarNewYear(date1_array, animal1, image1);
+
 
     // ------------------ date 2 ---------------------------
-    checkLunarNewYear(date2_array, animal2);
+    checkLunarNewYear(date2_array, animal2, image2);
+
 
     // check for lunear new years
-    function checkLunarNewYear(date_array, animal) {
+    function checkLunarNewYear(date_array, animal, image) {
         if (date_array[0] == '01' || date_array[0] == '02') {
             $.getJSON("	https://calendarific.com/api/v2/holidays?api_key=c951006e5e01815f962e4160bb7ae11ee5587f05&country=US&year=" + date_array[2], function (data) {
-                // console.log(data.response.holidays)
-                // console.log(date1);
                 const holidays = data.response.holidays;
                 holidays.forEach(element => {
                     // get the Chinese New Year date for the year
@@ -101,6 +101,7 @@ $(".results").on("click", function () {
                             console.log("month", date_array[2]);
 
                             animal = findAnimal(date_array, animal, possible_animals);
+                            image.src = "/images/animals/" + String(animal) + ".jpeg";
                             console.log(animal)
                         }
                         else if (date_array[1] < chinese_new_year[1]) {
@@ -110,6 +111,7 @@ $(".results").on("click", function () {
                             console.log("day", date_array[2]);
 
                             animal = findAnimal(date_array, animal, possible_animals);
+                            image.src = "/images/animals/" + String(animal) + ".jpeg";
                             console.log(animal)
                         }
                     }
@@ -118,8 +120,9 @@ $(".results").on("click", function () {
             });
         }
         else {
-            animal1 = findAnimal(date1_array, animal1, possible_animals);
-            console.log(animal1)
+            animal = findAnimal(date_array, animal, possible_animals);
+            image.src = "/images/animals/" + String(animal) + ".jpeg";
+            console.log(animal)
         }
     }
 
@@ -164,8 +167,6 @@ $(".results").on("click", function () {
             default:
                 animal = "error";
         }
-        // console.log(2022 % 12);
-        // console.log(animal);
         return animal;
     }
 })

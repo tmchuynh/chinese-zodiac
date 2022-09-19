@@ -228,3 +228,19 @@ h1 {
 .date-picker2.open .input2 button {
   background: #8ca2c0;
 }
+
+.zodiacs {
+  display: grid;
+  flex-flow: column;
+  justify-items: stretch;
+  align-content: center;
+  justify-content: center;
+  align-items: stretch;
+  padding-top: 28px;
+}
+
+.animal1_image, .animal2_image {
+  height: 200px;
+  width: auto;
+  margin: auto;
+}
