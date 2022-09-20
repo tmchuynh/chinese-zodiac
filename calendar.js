@@ -2,6 +2,10 @@ const results1 = document.querySelector(".selected-date1");
 const results2 = document.querySelector(".selected-date2");
 const image1 = document.querySelector(".animal1_image");
 const image2 = document.querySelector(".animal2_image");
+const text_results = document.querySelector(".compatability");
+const compatible_signs = document.querySelector(".compatible-signs");
+const eitheror_signs = document.querySelector(".eitheror-signs");
+const incompatible_signs = document.querySelector(".incompatible-signs");
 
 $(".calendar1").datepicker({
     dateFormat: 'mm/dd/yy',
@@ -82,9 +86,11 @@ $(".results").on("click", function () {
     // ------------------ date 2 ---------------------------
     checkLunarNewYear(date2_array, animal2, image2);
 
-    var compatability = compatible(animal1, animal2);
-    
+    // ------------------ results -------------------------
+    var compatibility = compatible(animal1, animal2);
 
+
+    // ----------------- functions ------------------------
     // check for lunear new years
     function checkLunarNewYear(date_array, animal, image) {
         if (date_array[0] == '01' || date_array[0] == '02') {
@@ -201,9 +207,9 @@ $(".results").on("click", function () {
             [0, 0, 5, 1, 1, 2, 0, 5, 1, 0, 1, 4], // horse
             [3, 0, 2, 5, 0, 0, 5, 4, 4, 1, 0, 5], // sheep
         ]
-        
-        var compatability = chart[animal1[1]][animal2[1]];
-        console.log(compatability)
+
+        var compatibility = chart[animal1[1]][animal2[1]];
+        console.log(compatibility)
 
         const legend = [
             [0, "worst couple"],
@@ -214,10 +220,26 @@ $(".results").on("click", function () {
             [5, "perfect match"]
         ]
 
-        var results = legend[compatability]
+        var results = legend[compatibility]
         console.log(results)
 
         return results
+    }
+
+    // show everything
+    text_results.classList.remove("hide");
+
+    if (compatibility[0] == 0) {
+        // incompatible
+        incompatible_signs.classList.remove("hide");
+    }
+    else if (compatibility[0] < 4) {
+        // either or signs
+        eitheror_signs.classList.remove("hide");
+    }
+    else {
+        // perfect matches
+        compatible_signs.classList.remove("hide");
     }
 
 })
