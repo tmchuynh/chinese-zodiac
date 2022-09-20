@@ -54,7 +54,7 @@ $(".calendar2").on("change", function () {
 
 });
 
-// Put dates into storage
+// Check compatability
 $(".results").on("click", function () {
     sessionStorage.setItem("results1", results1.innerHTML)
     sessionStorage.setItem("results2", results2.innerHTML)
@@ -72,16 +72,18 @@ $(".results").on("click", function () {
     const date2_array = date2.split("/")
     console.log(date2_array)
 
-    var animal1, animal2
+    const animal1 = undefined || [];
+    const animal2 = undefined || [];
     const possible_animals = ["monkey", "rooster", "dog", "pig", "rat", "ox", "tiger", "rabbit", "dragon", "snake", "horse", "sheep"]
 
     // ----------------- date 1 ----------------------------
     checkLunarNewYear(date1_array, animal1, image1);
 
-
     // ------------------ date 2 ---------------------------
     checkLunarNewYear(date2_array, animal2, image2);
 
+    var compatability = compatible(animal1, animal2);
+    
 
     // check for lunear new years
     function checkLunarNewYear(date_array, animal, image) {
@@ -101,7 +103,7 @@ $(".results").on("click", function () {
                             console.log("month", date_array[2]);
 
                             animal = findAnimal(date_array, animal, possible_animals);
-                            image.src = "/images/animals/" + String(animal) + ".jpeg";
+                            image.src = "/images/animals/" + String(animal[0]) + ".jpeg";
                             console.log(animal)
                         }
                         else if (date_array[1] < chinese_new_year[1]) {
@@ -111,7 +113,7 @@ $(".results").on("click", function () {
                             console.log("day", date_array[2]);
 
                             animal = findAnimal(date_array, animal, possible_animals);
-                            image.src = "/images/animals/" + String(animal) + ".jpeg";
+                            image.src = "/images/animals/" + String(animal[0]) + ".jpeg";
                             console.log(animal)
                         }
                     }
@@ -121,54 +123,103 @@ $(".results").on("click", function () {
         }
         else {
             animal = findAnimal(date_array, animal, possible_animals);
-            image.src = "/images/animals/" + String(animal) + ".jpeg";
+            image.src = "/images/animals/" + String(animal[0]) + ".jpeg";
             console.log(animal)
         }
     }
 
+    // finds the chinese zodiac animals
     function findAnimal(date_array, animal, possible_animals) {
         switch (date_array[2] % 12) {
             case 0:
-                animal = possible_animals[0];
+                animal[0] = possible_animals[0];
+                animal[1] = 0
                 break;
             case 1:
-                animal = possible_animals[1];
+                animal[0] = possible_animals[1];
+                animal[1] = 1
                 break;
             case 2:
-                animal = possible_animals[2];
+                animal[0] = possible_animals[2];
+                animal[1] = 2
                 break;
             case 3:
-                animal = possible_animals[3];
+                animal[0] = possible_animals[3];
+                animal[1] = 3
                 break;
             case 4:
-                animal = possible_animals[4];
+                animal[0] = possible_animals[4];
+                animal[1] = 4
                 break;
             case 5:
-                animal = possible_animals[5];
+                animal[0] = possible_animals[5];
+                animal[1] = 5
                 break;
             case 6:
-                animal = possible_animals[6];
+                animal[0] = possible_animals[6];
+                animal[1] = 6
                 break;
             case 7:
-                animal = possible_animals[7];
+                animal[0] = possible_animals[7];
+                animal[1] = 7
                 break;
             case 8:
-                animal = possible_animals[8];
+                animal[0] = possible_animals[8];
+                animal[1] = 8
                 break;
             case 9:
-                animal = possible_animals[9];
+                animal[0] = possible_animals[9];
+                animal[1] = 9
                 break;
             case 10:
-                animal = possible_animals[10];
+                animal[0] = possible_animals[10];
+                animal[1] = 10
                 break;
             case 11:
-                animal = possible_animals[11];
+                animal[0] = possible_animals[11];
+                animal[1] = 11
                 break;
             default:
-                animal = "error";
+                animal[0] = "error";
         }
         return animal;
     }
+
+    // check compatibility of two animals
+    function compatible(animal1, animal2) {
+        const chart = [
+            [5, 5, 0, 5, 5, 2, 1, 4, 2, 1, 4, 0], // monkey
+            [0, 5, 4, 0, 5, 5, 0, 1, 1, 0, 0, 1], // rooster
+            [4, 1, 4, 5, 0, 1, 1, 0, 4, 0, 1, 4], // dog
+            [4, 3, 5, 5, 2, 0, 4, 5, 0, 1, 4, 2]  // pig
+            [1, 5, 1, 5, 5, 2, 0, 3, 4, 0, 4, 4], // rat
+            [5, 1, 0, 4, 0, 5, 0, 0, 1, 5, 4, 3], // ox
+            [1, 0, 0, 1, 4, 0, 5, 2, 0, 4, 4, 5], // tiger
+            [4, 4, 1, 1, 1, 0, 1, 5, 5, 0, 5, 5], // rabbit
+            [5, 0, 5, 1, 3, 4, 1, 0, 4, 4, 0, 2], // dragon
+            [2, 4, 0, 0, 4, 0, 3, 0, 3, 5, 1, 0], // snake
+            [0, 0, 5, 1, 1, 2, 0, 5, 1, 0, 1, 4], // horse
+            [3, 0, 2, 5, 0, 0, 5, 4, 4, 1, 0, 5], // sheep
+        ]
+        
+        var compatability = chart[animal1[1]][animal2[1]];
+        console.log(compatability)
+
+        const legend = [
+            [0, "worst couple"],
+            [1, "average"],
+            [2, "good friend"],
+            [3, "good match or enemy"],
+            [4, "complementary"],
+            [5, "perfect match"]
+        ]
+
+        var results = legend[compatability]
+        console.log(results)
+
+        return results
+    }
+
 })
 
 
