@@ -17,25 +17,24 @@ $(".calendar2").datepicker({
     firstDay: 1
 });
 
-$(document).on('click', '.date-picker1 .input1', function (e) {
+$(document).on('click', '.date-picker1 .input1', function(e) {
     let $me = $(this),
         $parent = $me.parents('.date-picker1');
     $parent.toggleClass('open');
 });
 
-$(document).on('click', '.date-picker2 .input2', function (e) {
+$(document).on('click', '.date-picker2 .input2', function(e) {
     let $me = $(this),
         $parent = $me.parents('.date-picker2');
     $parent.toggleClass('open');
 });
 
-$('.calendar2',).on('click', function (e) {
+$('.calendar2', ).on('click', function(e) {
 
 }), setInterval(50000);
 
-$(".calendar1").on("change", function () {
+$(".calendar1").on("change", function() {
     let $me1 = $(this);
-    let $selected1 = $me1.val();
     let $parent1 = $me1.parents('.date-picker1');
 
     console.log($parent1)
@@ -46,9 +45,8 @@ $(".calendar1").on("change", function () {
 
 });
 
-$(".calendar2").on("change", function () {
+$(".calendar2").on("change", function() {
     let $me2 = $(this);
-    let $selected2 = $me2.val();
     let $parent2 = $me2.parents('.date-picker2');
 
     console.log($parent2)
@@ -59,7 +57,7 @@ $(".calendar2").on("change", function () {
 });
 
 // Check compatability
-$(".results").on("click", function () {
+$(".results").on("click", function() {
     sessionStorage.setItem("results1", results1.innerHTML)
     sessionStorage.setItem("results2", results2.innerHTML)
 
@@ -94,7 +92,7 @@ $(".results").on("click", function () {
     // check for lunear new years
     function checkLunarNewYear(date_array, animal, image) {
         if (date_array[0] == '01' || date_array[0] == '02') {
-            $.getJSON("	https://calendarific.com/api/v2/holidays?api_key=c951006e5e01815f962e4160bb7ae11ee5587f05&country=US&year=" + date_array[2], function (data) {
+            $.getJSON("	https://calendarific.com/api/v2/holidays?api_key=c951006e5e01815f962e4160bb7ae11ee5587f05&country=US&year=" + date_array[2], function(data) {
                 const holidays = data.response.holidays;
                 holidays.forEach(element => {
                     // get the Chinese New Year date for the year
@@ -111,8 +109,7 @@ $(".results").on("click", function () {
                             animal = findAnimal(date_array, animal, possible_animals);
                             image.src = "/images/animals/" + String(animal[0]) + ".jpeg";
                             console.log(animal)
-                        }
-                        else if (date_array[1] < chinese_new_year[1]) {
+                        } else if (date_array[1] < chinese_new_year[1]) {
                             // birthay is before chinese new year
                             // use animal before
                             date_array[2] = date_array[2] - 1;
@@ -126,8 +123,7 @@ $(".results").on("click", function () {
                 });
 
             });
-        }
-        else {
+        } else {
             animal = findAnimal(date_array, animal, possible_animals);
             image.src = "/images/animals/" + String(animal[0]) + ".jpeg";
             console.log(animal)
@@ -197,7 +193,7 @@ $(".results").on("click", function () {
             [5, 5, 0, 5, 5, 2, 1, 4, 2, 1, 4, 0], // monkey
             [0, 5, 4, 0, 5, 5, 0, 1, 1, 0, 0, 1], // rooster
             [4, 1, 4, 5, 0, 1, 1, 0, 4, 0, 1, 4], // dog
-            [4, 3, 5, 5, 2, 0, 4, 5, 0, 1, 4, 2]  // pig
+            [4, 3, 5, 5, 2, 0, 4, 5, 0, 1, 4, 2], // pig
             [1, 5, 1, 5, 5, 2, 0, 3, 4, 0, 4, 4], // rat
             [5, 1, 0, 4, 0, 5, 0, 0, 1, 5, 4, 3], // ox
             [1, 0, 0, 1, 4, 0, 5, 2, 0, 4, 4, 5], // tiger
@@ -205,7 +201,7 @@ $(".results").on("click", function () {
             [5, 0, 5, 1, 3, 4, 1, 0, 4, 4, 0, 2], // dragon
             [2, 4, 0, 0, 4, 0, 3, 0, 3, 5, 1, 0], // snake
             [0, 0, 5, 1, 1, 2, 0, 5, 1, 0, 1, 4], // horse
-            [3, 0, 2, 5, 0, 0, 5, 4, 4, 1, 0, 5], // sheep
+            [3, 0, 2, 5, 0, 0, 5, 4, 4, 1, 0, 5] // sheep
         ]
 
         var compatibility = chart[animal1[1]][animal2[1]];
@@ -232,17 +228,12 @@ $(".results").on("click", function () {
     if (compatibility[0] == 0) {
         // incompatible
         incompatible_signs.classList.remove("hide");
-    }
-    else if (compatibility[0] < 4) {
+    } else if (compatibility[0] < 4) {
         // either or signs
         eitheror_signs.classList.remove("hide");
-    }
-    else {
+    } else {
         // perfect matches
         compatible_signs.classList.remove("hide");
     }
 
 })
-
-
-
